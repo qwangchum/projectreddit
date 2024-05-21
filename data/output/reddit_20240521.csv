@@ -1,0 +1,364 @@
+id,title,selftext,score,num_comments,author,created_utc,url,upvote_ratio,over_18,edited,spoiler,stickied
+1cw93yd,Do you guys uses OLAP cubes ?,"https://preview.redd.it/azrdj8n52j1d1.png?width=721&format=png&auto=webp&s=4b8f381a677d27e66647b0c3d4840a87cf01b585
+
+From the datawarehouse tool kit i found this.  Does this mean with the arrival of columnar db people tend to use less olap cubes
+
+But as per my understanding they should be used for improving  query performance with columnar db by storing pre computed results ? If there is any other tool or process in modern data engineering that replaced OLAP or mimic OLAP cube behaviour for faster queries in DWBI system Please give some insight on that too.
+
+Edit 1 (question extended): But why we don't use they can still boost performance of queries in columnar db. Like i can store monthly sales as pre computed. So user can directly get the sales result for a specific month. But if it is not stored we may have to compute the results and iterate over billions of record in sales column.",77,48,AggravatingParsnip89,2024-05-20 06:42:49,https://www.reddit.com/r/dataengineering/comments/1cw93yd/do_you_guys_uses_olap_cubes/,0.99,False,False,False,False
+1cwbpis,Data Transformation Techniques: Share Your Favourite Tricks and Tools!,"Hey fellow Redditors,
+
+As data enthusiasts, we've all been there - staring at a dataset that's just not quite ready for analysis. Whether it's handling missing values, converting data types, or merging datasets, data transformation is an essential step in the data science workflow.
+
+I'm curious to know: what are some of your go-to data transformation techniques? Do you have a favorite tool or library that makes your life easier? Are there any specific challenges you've faced and how did you overcome them?
+
+Personally, I've found myself relying on pandas' melt function to reshape datasets, and fillna to handle those pesky missing values. But I'm sure there are many more creative and efficient ways to tackle these tasks.
+
+So, share your expertise and let's learn from each other What are some of the most useful data transformation techniques you've learned?
+
+Some questions to get you started:
+
+* What's your favourite data transformation technique and why?
+
+* Are there any specific tools or libraries you swear by?
+
+* How do you handle common data transformation challenges like missing values or data type conversions?
+
+* Are there any data transformation best practices you've learned the hard way?
+
+* Other than fixing missing values and data type in the columns what other transoformations you use?
+
+Let's get the conversation started and help each other become data transformation masters!",35,19,FiNiX_Forge,2024-05-20 09:51:59,https://www.reddit.com/r/dataengineering/comments/1cwbpis/data_transformation_techniques_share_your/,1.0,False,False,False,False
+1cwij5d,"Any good sources for staying up to date (bleeding edge, actually) on data engineering related topics?","Are there any sources that catalog things like conferences, hackathons, associations, news sources, etc. for things like networking, data engineering, SRE, ML, DevOps, platform engineering, etc?",39,13,DuckDatum,2024-05-20 15:37:34,https://www.reddit.com/r/dataengineering/comments/1cwij5d/any_good_sources_for_staying_up_to_date_bleeding/,1.0,False,False,False,False
+1cwaaxm,What is the best way to deploy SQL transformations in Apache Iceberg?,"Hello everyone, 
+
+My company is migrating from Snowflake to Apache Iceberg these days, and we need to decide on the SQL transformations architecture. We currently use dbt on Snowflake, triggered by Airflow. 
+
+There are several options I can think of:
+
+1. Spark - this seems like the ultimate go-to tool for transformations, but requires heavy lifting in terms of configuration, onboarding to the APIs, migrating all the current transformations, and the debugging of problems is not straight forward at all.
+
+2. dbt-athena - I see people out there use this tool, but the traction seems pretty low and I'm not sure why
+
+3. dbt-duckdb or some other form of iceberg -> duckdb -> iceberg transformations that would allow me not to keep a full-blown query engine just for the transformations but then problems like incremental materializations and accessing Iceberg with pyIceberg become non-trivial.
+
+  
+How do you manage this in your organizations and what's your recommendation?",15,5,Infinite_Bluebird_98,2024-05-20 08:08:53,https://www.reddit.com/r/dataengineering/comments/1cwaaxm/what_is_the_best_way_to_deploy_sql/,0.95,False,False,False,False
+1cw9gmc,Best databases for upsert performance,"Morning y’all
+We’re currently using mongodb, but unfortunately the upsert performance is pretty poor within a table. everything’s indexed etc - the only thing we haven’t done is shard it (but it’d all be on one server in the end either way).
+
+As such, we’re looking for solutions. The one that’s looking the best thus far is Apache Hudi, ran on top of Hadoop HDFS.
+
+The data is semi and unstructured text data, primarily.
+
+Thoughts? Have we missed anything? Are we being silly?",16,6,Colafusion,2024-05-20 07:07:52,https://www.reddit.com/r/dataengineering/comments/1cw9gmc/best_databases_for_upsert_performance/,0.94,False,False,False,False
+1cwncgu,Easiest way to identify fields causing duplicate in a large table ?,"…in SQL or with DBT ?
+
+EDIT : causing duplicate of a key column after a lot of joins ",16,25,Advanced_Addition321,2024-05-20 18:59:03,https://www.reddit.com/r/dataengineering/comments/1cwncgu/easiest_way_to_identify_fields_causing_duplicate/,0.86,False,False,False,False
+1cw9zvi,level of snowflaking inn Kimball Data modelling,"Hi everyone, I hope you all are doing fine.  
+I have two question regarding Kimball data modelling.  
+1. If Denormalization is good for analytical system then why we use dimension tables why not put everything in fact tables ?  
+2. Upto what level of dimensions we are under the limit of kimball modelling of using denormalized data. Like if we have fact table at center and there are four dim table we can say data is denormalized but not 100 percent. but what if we have dim table that is having foreign key to another table(dimension of dim table). Does it break  kimball dimensional modelling ?
+
+https://preview.redd.it/tp1r66r9cj1d1.png?width=1100&format=png&auto=webp&s=54b18f3d8e26585e32a1180a1af33d1479b79b63
+
+or i can frame this question like this upto what level of snowflaking is allowed for better performance in kimball modelling. Does it needs to be tried and tested before data modelling we should try different levels ?  
+For optimum performance of queries in DW do you go for 100 percent star schema or add some dim of dim but not much ?   
+I am new to data modelling, Any help would be much appreciated. Thanks in advance.",12,7,AggravatingParsnip89,2024-05-20 07:46:32,https://www.reddit.com/r/dataengineering/comments/1cw9zvi/level_of_snowflaking_inn_kimball_data_modelling/,0.85,False,False,False,False
+1cwm3g3,Any tips on how to from Data Engineer role to Data Architect role,"Hi All,
+
+As the title says looking to move from the traditional Data Engineering role to the Data Architect role.
+
+The reasons are I am tired of execution and not growing in my role. I am kinda struck in migration to cloud and the work is repetitive etc so looking to grow and switch companies. 
+
+My confidence in my coding ability is not very high so thinking of going to architecture role. Am I being naive ? Will being a data architect also need to ship tons of code ? 
+
+Thanks,
+Rajan
+",12,8,No_Requirement_9200,2024-05-20 18:07:19,https://www.reddit.com/r/dataengineering/comments/1cwm3g3/any_tips_on_how_to_from_data_engineer_role_to/,0.88,False,False,False,False
+1cwadpg,Airflow deployment on a single machine,"Hi, I am working on a data project that involves dbt - Airflow stack. Since the Airflow is used exclusively for running dbt code, I don't need the distributed deployment model and use it in standalone mode using LocalExecutor (running ""airflow standalone"").
+
+The issue is that in the log file, there is a note that said ""standalone | Airflow Standalone is for development purposes only. Do not use this in production!"".
+
+So maybe my approach is not suitable for production. But the other approach is to setup a ""thick"" stack of CeleryExecutor with 4 services (webserver, scheduler, triggerer, worker), Redis and a database, which is overkill in my opinion.
+
+So for people in small environments, what is your Airflow setup?",12,5,dreamingfighter,2024-05-20 08:14:39,https://www.reddit.com/r/dataengineering/comments/1cwadpg/airflow_deployment_on_a_single_machine/,1.0,False,False,False,False
+1cwsvot,Low/No Code ETL Tools vs Code Based On Companies Tech Maturity,"Hey all,
+
+Just started working with a client who is very early on their data journey but has big goals. Basically it's currently just the CFO doing PowerBI Dashboards for their company that generates about 40 million in revenue. They plan on getting to 100 million in the next 5 years and want to make a lot of that growth data driven and to start a real IT org with engineers in that time (currently doesn't have anyone like that). I'm going to be helping them build some pipelines and do some modeling starting small but eventually building an EDW for some disparate data sources including their ERP system. 
+
+So my question is, since they currently don't have anyone who can code or is tech savy in that sense, I'm wondering if it makes more sense to try and use some low code/no code ETL cloud tools (Azure in this case) for pipelines instead of using SQL, Python, DBT etc. I'm trying to balance building standard procedures for data ingestion that can be maintained by folks who aren't engineers, but also making sure that a year or 2 from now the process won't be insufficient as they scale and grow. I haven't used any of these no code ETL tools since I primarily have just done SQL and Python so I don't really have a great feel for if they're going to burn us down the road.
+
+Does anybody have any thoughts? Have low/no code ETL tools stood the test of time in your orgs or did you end up abandoning them because they were limited?  ",8,18,IrresistibleMittens,2024-05-20 22:51:35,https://www.reddit.com/r/dataengineering/comments/1cwsvot/lowno_code_etl_tools_vs_code_based_on_companies/,0.84,False,False,False,False
+1cwx0fx,Dimensional vs 3NF Data Models,"I was hoping this audience could help settle a debate.  In my organization we often debate the benefits of 3NF vs Dimensional in terms of how we should model our data outcomes.  I do not want to taint this post with my opinion -- I am curious about yours.  What data models style does your organization use and what is your experience with both types?
+
+I know there are other modeling types such as OBT and Data Vault -- but these are out of scope paradigm so to speak.",6,11,kentmaxwell,2024-05-21 02:12:59,https://www.reddit.com/r/dataengineering/comments/1cwx0fx/dimensional_vs_3nf_data_models/,1.0,False,False,False,False
+1cwbx1x,Building an Offline RAG Chatbot with Custom Frontend and WebSockets,"Just a short while ago, I published a [Medium article](https://medium.com/@nydas/building-an-offline-rag-chatbot-with-custom-frontend-and-websockets-3a739878adf1?source=friends_link&sk=f569f158c2b6cdb9fb1a4504831b1f67) that walks through the creation of an AI chatbot that has session memory, and references data in a vectorstore. It's using the latest llama3, and is completely local. What makes it a little different to all the other articles is that it runs as a backend server, connecting to a simple React webapp over WebSockets. You can bypass the frontend and query it using Postman if you like.
+
+Features:
+
+* Python backend
+* ChromaDB vectorstore
+* Session memory
+* WebSockets
+* React frontend
+
+https://preview.redd.it/8vnqro5s1k1d1.png?width=2586&format=png&auto=webp&s=0fed607227db877684148c4a6304b5aa60011b13
+
+The article has a video of the app in use in case you don't want to set it up locally, but if you do the full code is available on my GitHub repo.
+
+If this is interesting to you, please check it out. I hope it's useful/helpful to some of you.",5,1,nydasco,2024-05-20 10:05:17,https://www.reddit.com/r/dataengineering/comments/1cwbx1x/building_an_offline_rag_chatbot_with_custom/,1.0,False,False,False,False
+1cw9kkn,Spark and Airflow in production,"Hello guys, I am working on a project that host a standalone spark cluster. Then user can log in to my server, create their job and submit that job to Spark cluster with Airflow Operator. I find it difficult to manage and monitor spark job. For example, how can I get the status of a specific job or how to manage and get log of each job. I am considering using Livy in the middle of Spark and Airflow, that Airflow will send job to Livy and Livy will manage and submit job to Spark. However, I see that Livy is not so popular. People seem not using it at all. Does anyone ever work with Spark and Airflow before, can you give me some advice? Thanks a lot
+
+Also, can I use Spark Standalone mode in production? What is the difference of Standalone and Yarn or K8s mode in production? ",5,1,resrrdttrt,2024-05-20 07:15:47,https://www.reddit.com/r/dataengineering/comments/1cw9kkn/spark_and_airflow_in_production/,1.0,False,False,False,False
+1cwvnyx,help homelab server hardware,"Guys, I specialize in engineering and data science. I'm doing a post in Data Architecture.
+
+I was addicted to games and have always been enthusiastic, as a result I have a very good ASUS TUF motherboard (supports ECC) with 3 or 4 nvme inputs and if I'm not mistaken 6 SATA inputs. AMD Ryzen™ 9 7950X processor with WC and 11 Fans, cabinet with only 2 hd bays and they are free
+
+1 NVME TB SSD
+
+1 NVME 4TB SSD
+
+1 SSD 240GB
+
+DDR5 5600 2x32 RAM = 64GB NON-ECC
+
+RTX 4070TI 12GB
+
+I also have a legion Y540 notebook with 16gb ram, 2060 TI 6GB and 120 nvme + 1tb sdd, this notebook I'm testing truenas and it was sitting here.
+
+And I have a company laptop, which I can also work with normally.
+
+My Goals: Get a truenas and host everything from plex, nextcloud, Minio (my S3 lakehouse) or HDFS, VPN (censorship is increasing here), airflow, metabase, grafana and others, let flow of data pypelines with spark running, jupternotebook, train models test architectures and etc ...
+
+My biggest frustration today is having a PC of this size and not taking advantage of everything, since I make models and pipelines sometimes personal and I have nowhere to host and etc, that is, I end up not using the machine 100%, and I'm tired of paying onedrive too.
+
+I'd like your experience and help to get the setup in the best possible way.... for example... using the PC as a server,
+
+i'm thinking of leaving it at 128GB ram, given the quality of theirs i'm thinking of buying + 64 GB non ecc instead of trying to sell them and buy a 128 ECC kit
+
+I'm thinking of buying another 4tb SSD
+
+and make a raid where I would add 2 SSDS 8TB and leave + 2 HDDS 16TB.
+
+I don't know how to make the best use of the read and write rates and how to have the most space possible, since I've seen combinations with 3 HDS that leave 2 HDS free.
+
+Can you help me with alternatives for the best setup, what new parts to buy, use the notebook in a dock with a monitor and leave this PC as a server or create a new server? remembering that computing power for the data area usually benefits from heavy-duty harware with higher clocks since they demand a lot of execution time.
+
+I don't have a very big budget, I want to try to make the most of it without spending another 20k on a new computer. If the NON ECC ddr5 memory doesn't make a big difference to me, it's more advantageous to keep them and buy another 64.
+
+ps: tech stuff in brazil is very expensive. it's hard to find anyone else with the same setup as me.
+
+my pc  
+
+
+https://preview.redd.it/0pva9w3qio1d1.png?width=1600&format=png&auto=webp&s=8d85ec9dca5571ce7f30d33ffdcd97179c517438
+
+",3,0,LMASSUCCI,2024-05-21 01:04:57,https://www.reddit.com/r/dataengineering/comments/1cwvnyx/help_homelab_server_hardware/,0.81,False,False,False,False
+1cwy3mp,Please help settle argument over Redshift Tables,"I was hoping to ask this sub for advice and input on a situation that happened today at work. Without giving too much details, our data team has a nightly ELT process that ultimately results in physical tables that tableau reports point to. In the ELT, data is imported from CSV files using a copy commands.
+
+To help improve the performance of a report, today our manager urgently requested that we use a “parquet table” instead of a “csv table” because Redshift stores them differently. That we should unload the final table to a set of parquet files and then copy them back to a new table, as is, because it would make the report quicker. 
+
+While I understand the benefits of using parquet FILES, I was under the impression that once the data is copied over, it’s converted/stored in the TABLE w/ columnar format. Again these are not external tables but physical ones. 
+
+Me and some colleagues tried bringing this up to our manager, but it didn’t go over well and  resulted in a lengthy “discussion” where we were called incapable… lol
+
+What do you all think? Once data is copied to a physical table in redshift, does the file format that was used in the copy statement impact performance? ",2,2,Bond-0069,2024-05-21 03:10:52,https://www.reddit.com/r/dataengineering/comments/1cwy3mp/please_help_settle_argument_over_redshift_tables/,1.0,False,False,False,False
+1cwvj2w,Seeking advice on my Data Engineering learning plan,"I'm currently studying Computer Science, will be 3rd year next school year, and have a solid foundation in Python and Machine Learning concepts such in supervised and unsupervised models. My ultimate goal is to become a Data Scientist or Machine Learning Engineer, but I'm also open to a career in Data Engineering.
+
+Over the next three months, I'm planning to deepen my knowledge in data engineering. Within 3 months because I want to maximize our semestral break if I won't be able to have an internship this summer. Here's my plan so far: First, I want to learn web scraping techniques using libraries like BeautifulSoup, and practice scraping data from different types of websites.
+
+Next, I intend to focus on data storage. Initially, I'll set up and use a relational database like MySQL or PostgreSQL locally. After that, I'll familiarize myself with cloud databases on platforms like AWS, Google Cloud, or Azure, and practice storing data in the cloud.
+
+Additionally, I plan to learn Docker basics to containerize my web scraping and data storage applications. I'll also use Docker Compose for managing multi-container applications.
+
+I understand these are foundational steps in data engineering and data warehousing, but I'm not sure what else to focus on after this.
+
+**1.** What are possible concepts that I may have missed learning?
+
+**2.** Would this suffice the skills that would help me land a Data Engineer job after I graduate (in 2 years)?
+
+**3.** Do you know any learning materials that would be helpful?
+
+Thank you guys for your time!",3,4,Mysterious_Charity99,2024-05-21 00:58:20,https://www.reddit.com/r/dataengineering/comments/1cwvj2w/seeking_advice_on_my_data_engineering_learning/,0.72,False,False,False,False
+1cwpg8u,Opensearch or Aurora Postgresql for Time Series Data?,"So I have a requirment to build an serivce that provides aggrigated timeseries data via an API. The data has 3 features in addition to the date\_time and multiple options can be selected per feature to create new subsets of the aggregation.
+
+In  the communities opinion what is a better backend Db option here:
+
+* **Opensearch**: JSON formatted docs and use the power of Opensearch to aggregate the data. 
+* **AWS Aurora Postgresql**: Store the data and date\_time and id's that relate to the categorical features with 3 additional tables for the each of the feature categories.",2,0,candyman_forever,2024-05-20 20:24:37,https://www.reddit.com/r/dataengineering/comments/1cwpg8u/opensearch_or_aurora_postgresql_for_time_series/,1.0,False,False,False,False
+1cwkua1,Looking for recommendations for data engineering and GCP Books,"Hi all,
+
+I am learning data engineering and GCP and came across this [book](https://www.amazon.com/gp/aw/d/B0D11L956B/ref=tmm_kin_swatch_0?ie=UTF8&qid=&sr=). I was wondering if anyone has read it or could look at the sample to see if it's worth it. Additionally, if there's a good book you can recommend, I would appreciate it if you could share the title!
+
+Thanks!
+
+
+
+",2,1,buangakun3,2024-05-20 17:15:01,https://www.reddit.com/r/dataengineering/comments/1cwkua1/looking_for_recommendations_for_data_engineering/,1.0,False,False,False,False
+1cwj9pu,Data Mapping Requirements Template,Does anyone have any good templates for data mapping requirements capture? Looking for something that captures source to target and associated transforms as well as business logic?,2,1,ForMrKite,2024-05-20 16:08:55,https://www.reddit.com/r/dataengineering/comments/1cwj9pu/data_mapping_requirements_template/,1.0,False,False,False,False
+1cwtvs0,Ibis: Unified dataframe API for different data backends,,1,0,AMDataLake,2024-05-20 23:37:59,https://youtu.be/Hb7KNDT5ZMU,1.0,False,False,False,False
+1cwjoqw,Merge small files before ingestion? ,"Hello,
+
+I have 2 years of experience as a data engineer and I just joined a new company where people cannot really agree on the optimal choice. 
+
+We have a user interface where the user is able to upload .csv or .txt files that are usually between 10 to 50 MB. 
+
+We are using argo workflow as orchestrator and the current process is the following: 
+
+1) a file is upload by the user on the user interface and we directly move the file on S3 (no validation) 
+
+2) we have sensors on argo workflow, whenever there is an upload on a given bucket on S3, it will launch the appropriate pipeline that does:
+
+2.1) data validation and cleaning (column renaming etc)
+
+2.2) insertion into db 
+
+
+This is working, even for very large files, i tried with files > 50 GB and no issues. But now, some users have to upload multiple files (like 100 files) and the frontend only accepts 1 file at time. 
+
+One senior DE suggested me to allow the user to upload a .zip folder that will contains all the files to upload. 
+
+I am ok with that, but he also said that this is the user has like 70 files on the zip, argo workflow will launch 70 different pipeline and it’s a waste a ressources according to him. He wants me to merge all files just after unzip. 
+
+I don’t think this is a good practice because if we merge all input files into a single file, i see at least 2 issues;
+1) if the validation fails, its harder to find the original bad file. 
+2) increases complexity by having 2 layers of « raw » data
+
+
+My suggestion was: 
+
+Allowing user to upload a folder from the UI (React) and then, on our back-end (Python), we will loop on each uploaded file to copy them one by one on S3. The sensor will run every time we will upload a file still. 
+
+
+I also read this « In a data engineer’s life, there is a chance that we have to work with small files, tons of them. We don’t like tons of small files for our extracting, transforming and loading job, especially, combining with our choice of big data engineering infrastructure. » from https://liangjunjiang.medium.com/etl-of-tons-of-small-files-ebe1414a00f8
+
+This is why i am confused if the files should be merged !
+
+Thanks
+
+
+
+",1,0,Classic_Bell_6182,2024-05-20 16:26:33,https://www.reddit.com/r/dataengineering/comments/1cwjoqw/merge_small_files_before_ingestion/,1.0,False,False,False,False
+1cwhc9i,Delta Lake MERGE INTO will hang Spark session without result (10000 columns),"I am experimenting with Delta Lake as the primary storage solution for my tabular data, which is updated daily. I tried to mimic the basic use case - an existing target table is updated by the new data that can change existing data, i.e. upserts. I am using a MERGE INTO operation, where the target table is my Delta table and the table with updates is simply saved as a Parquet file.
+
+My tables are special in the number of columns - there are up to 10000 columns, most of them are binary. One column contains an identifier of a row, represented as a string hash, which is used in the matching condition of the merge operation.
+
+I am experimenting with a small main table having 5000 rows, which is 10 MB of one Parquet file on disk and the same table, but stored as a plain Parquet, which has several small 3.5 MB files.
+
+My merge operation takes extremely long, probably stuck without any computation. What am I missing? I haven't tried partitioning since the size of the whole table is just 10 MB. I expected this operation to be extremely fast even in the case of non-optimized tables.
+
+I will appreciate your help, thank you!
+
+Spark version: 3.5.1. Delta Lake (delta-spark) version: 3.1.0. Instance: r5n.16xlarge
+
+The only output that I get is
+
+ 
+
+24/05/20 14:18:21 WARN DAGScheduler: Broadcasting large task binary with size 1094.0 KiB  
+24/05/20 14:18:21 WARN DAGScheduler: Broadcasting large task binary with size 1097.6 KiB
+
+ 
+
+Then the Spark session hangs and does nothing. The code does not finish.
+
+Steps to reproduce:
+
+    import pyspark.sql.functions as F
+    from pyspark.sql import SparkSession
+    from delta import *
+    
+    def get_spark():
+        builder = SparkSession.builder.master(""local[4]"").appName('SparkDelta') \
+            .config(""spark.sql.extensions"", ""io.delta.sql.DeltaSparkSessionExtension"") \
+            .config(""spark.sql.catalog.spark_catalog"", ""org.apache.spark.sql.delta.catalog.DeltaCatalog"") \
+            .config(""spark.driver.memory"", ""32g"") \
+            .config(""spark.jars.packages"", 
+                    ""io.delta:delta-spark_2.12:3.1.0,""
+                    ""io.delta:delta-storage:3.1.0"") \
+        
+        spark = builder.getOrCreate()
+    
+        return spark
+        
+        
+    spark = get_spark()
+    
+    ### GENERATE SOME FAKE DATA
+    
+    import pandas as pd
+    import numpy as np 
+    
+    num_rows = 5000
+    num_cols = 10000
+    array = np.random.rand(num_rows, num_cols)
+    
+    df = pd.DataFrame(array)
+    df = df.reset_index()
+    df.to_csv('features.csv')
+    
+    ### DATA TO DELTA LAKE TABLE
+    df_spark = spark.read.format('csv').load('features.csv')
+    df_spark.write.format('delta').mode(""overwrite"").save('deltalake_features')
+    
+    # Creating data to merge - just first 100 rows
+    df_slice = df.iloc[:100, 0:2]
+    df_slice.to_csv('features_slice_100.csv')
+    df_spark_slice = spark.read.format('csv').load('features_slice_100.csv')
+    
+    
+    ### MERGE INTO code
+    target_delta_table = DeltaTable.forPath(spark, 'deltalake_features')
+    df_updates = df_spark_slice
+    df_target = target_delta_table.toDF()
+    (
+      target_delta_table.alias('target')
+      .merge(
+      df_updates.alias('updates'),
+        (
+          (F.col('target._c1') == F.col('updates._c1'))
+        )
+      )
+      .whenMatchedUpdate(set={
+        '_c2': F.lit(42)
+      })
+      .execute()
+    )
+    
+
+# Observed results
+
+The Spark session hangs for no reason.
+
+Expected results
+
+I expect the merge to finish successfully.
+
+Further details
+
+If I do a simple inner join, the operation takes just 1 minute to complete, so I'd like to see the same speed here.
+
+Environment information
+
+\* Delta Lake version: 3.1.0  
+\* Spark version: 3.5.1  
+\* Scala version: 2.12.18",1,0,Spiritual-Water-6590,2024-05-20 14:46:47,https://www.reddit.com/r/dataengineering/comments/1cwhc9i/delta_lake_merge_into_will_hang_spark_session/,1.0,False,False,False,False
+1cwh5mr,Skills needed for data engineering - 2024,"What skills would you say ( end to end ) are required for a data engineer in 2024?
+
+Im extremely good with SQL, adept with Python and have around 2+ years of experience, with most of it spent working extensively with SQL, ETL process, data preparation and migration as well as reporting and analytics in Oracle SCM and Finance domains using the Oracle cloud applications suite and Oracle relational database. Other skills too but not listing here for brevity’s sake.
+
+Where do I go from here? What I’m looking for is a list of skills, preferably across the board ( end to end ) so I can be a full data engineer. Any timelines along with the skills also would be helpful. i’m quite strong technically so learning stuff isn’t an issue, just what to learn and by when. If you’d like to discuss more about my profile please dm! 
+
+Thanks in advance! 
+",1,4,GreatestManEver99,2024-05-20 14:38:31,https://www.reddit.com/r/dataengineering/comments/1cwh5mr/skills_needed_for_data_engineering_2024/,0.54,False,False,False,False
+1cwdd65,How to Supercharge Your MarTech Stack,,1,0,growth_man,2024-05-20 11:34:27,https://moderndata101.substack.com/p/how-to-supercharge-your-martech-stack,0.67,False,False,False,False
+1cwbrit,programmer to DE by studying masters,"My degree was in IT but didnt learn much so I taught myself webdev.
+
+Currently working as a Marketing Automation Engineer. Basically I build API scripts (javascript and python) to manage data between marketing and sales CRM.
+
+I got an offer to take Masters in DS with a DE track. I would like to study again fulltime but not sure if its the right move.
+
+Anyone have experience changing roles into DE from a non-SWE background? Any advice also if I should take the Masters coming from a non-SWE degree?
+
+Thanks",1,7,Mysterious-Leg918,2024-05-20 09:55:54,https://www.reddit.com/r/dataengineering/comments/1cwbrit/programmer_to_de_by_studying_masters/,0.67,False,False,False,False

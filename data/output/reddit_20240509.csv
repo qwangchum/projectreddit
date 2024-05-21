@@ -1,0 +1,379 @@
+id,title,selftext,score,num_comments,author,created_utc,url,upvote_ratio,over_18,edited,spoiler,stickied
+1cneh0r,"I dislike Azure and 'low-code' software, is all DE like this?","I hate my workflow as a Data Engineer at my current company. Everything we use is Microsoft/Azure. Everything is super locked down. ADF is a nightmare... I wish I could just write and deploy code in containers but I stuck trying to shove cubes into triangle holes. I have to use Azure Databricks in a locked down VM on a browser. THE LAG. I am used to VIM keybindings and its torture to have such a slow workflow, no modern features, and we don't even have GIT integration on our notebooks.
+
+Are all data engineer jobs like this? I have been thinking lately I must move to SWE so I don't lose my mind. Have been teaching myself Java and studying algorithms. But should I close myself off to all data engineer roles? Is AWS this bad? I have some experience with GCP which I enjoyed significantly more. I also have experience with Linux which could be an asset for the right job.
+
+I spend half my workday either fighting with Teams, security measures that prevent me from doing my jobs, searching for things in our nonexistent version management codebase or shitty Azure software with no decent documentation that changes every 3mo. I am at my wits end... is DE just not for me?",169,90,OddRaccoon8764,2024-05-08 20:25:48,https://www.reddit.com/r/dataengineering/comments/1cneh0r/i_dislike_azure_and_lowcode_software_is_all_de/,0.91,False,False,False,False
+1cnleya,"What's a data engineering related book or article that you read recently that ""connected the dots"" for you?","I've recently been diving into stream processing and was getting overwhelmed with all the various nuances. I recently read [Making Sense of Stream Processing](https://www.oreilly.com/library/view/making-sense-of/9781492042563/#:~:text=Book%20description&text=Using%20several%20case%20studies%2C%20Kleppmann,and%20real-time%20user%20interfaces.) by Martin Kleppmann, and it just made everything else I read before ""click"" for me.
+
+I'm curious what resources have been similarly helpful for you.
+",52,13,on_the_mark_data,2024-05-09 01:35:57,https://www.reddit.com/r/dataengineering/comments/1cnleya/whats_a_data_engineering_related_book_or_article/,1.0,False,False,False,False
+1cna2mv,Understanding Data Pipelines: Why The Heck Businesses Need Them,,32,10,ivanovyordan,2024-05-08 17:20:30,https://open.substack.com/pub/datagibberish/p/data-pipelines-101?r=odlo3&utm_campaign=post&utm_medium=reddit&utm_ref=dataengineering&showWelcomeOnShare=true,0.92,False,False,False,False
+1cnmtpz,Trying to understand unit tests,"Hi everyone! I am a Data Analyst who is trying to learn Data Engineering in my spare time. I have been hearing a lot about unit tests, and many other tests. Can somebody bring me an example of what that is? I don’t fully understand what a data engineer unit tests. Sorry for the dumb question :D just trying to learn more about the field.",9,5,Fair-Antelope-3886,2024-05-09 02:47:31,https://www.reddit.com/r/dataengineering/comments/1cnmtpz/trying_to_understand_unit_tests/,0.86,False,False,False,False
+1cn65hv,I'm building a tool that automatically writes DBT staging codes using LLMs,,9,4,Willing-Site-8137,2024-05-08 14:38:37,https://v.redd.it/deejhwq1s7zc1,0.77,False,False,False,False
+1cnc0fm,"
+ Choosing Between DevOps and Data Engineering""","I've worked with SAP for four years and just completed my MS in Data Science. While studying, I found out that I prefer programming over the math-heavy parts of data science. This got me interested in data engineering. But now that I'm 30 and feeling the pressure of time, I'm not sure what to choose next. Should I stick with DevOps since I have experience with SAP and even got certified in AWS, which is about to expire? Or should I go for data engineering instead? I want to make the right choice based on my past experience and what's best for my career.",6,12,krishkarma,2024-05-08 18:42:00,https://www.reddit.com/r/dataengineering/comments/1cnc0fm/choosing_between_devops_and_data_engineering/,0.76,False,False,False,False
+1cmy8kv,Best practice for comparing timestamps (string comparison vs datetime comparison),"Hi!
+
+Im currently creating a method for incrementally reading files from a file-area/folder-structure.
+
+TLDR: i want to now what is best pracice / the fastes way of comparing timestamps. Is it using string timestamps like ""20240505071347878"">""20240505071347871"" or is is using datetime timestamps like datetime()>datetime().
+
+I will give some more information regarding my scenario which are important to consider when giving advice.
+
+So i have a large file area with loads of files ordered like this:
+
+20240502/  
+-xxxxxxTIMESTAMP1.json  
+-xxxxxxTIMESTAMP2.json  
+-xxxxxxTIMESTAMP3.json  
+20240503/  
+-xxxxxxTIMESTAMP4.json  
+-xxxxxxTIMESTAMP5.json  
+-xxxxxxTIMESTAMP6.json  
+20240504/  
+-xxxxxxTIMESTAMP7.json  
+-xxxxxxTIMESTAMP8.json  
+-xxxxxxTIMESTAMP9.json
+
+Each file has a filepath like this:
+
+Files/Prod\_Dataplattform\_ADLS/forecast/20240505/forecast20240505071102209.csv
+
+Eg the filename contains the timestmap.
+
+Now i have created a method
+
+    def list_and_filter_filenames(path: str, table_name: str, timestamp: Union[str, datetime], read_from: bool, max_depth=2):
+
+That recursively iterates over the filearea and checks which files to read based on the inputted timestamp. If the read\_from variable is True, the method will return the full path of all files that have a timestamp greater than the inputted timestamp. If the read\_from is false all files with a timestamp less than the inputed timestamp will be returned.
+
+**As you understand, the operation that compares the timestamps will be done a lot of times!**
+
+My question is therefore, what is the most efficient way of comparing timestamps? is it through datetime object or is it through strings. I would guess using datetime is the most ""solid"".
+
+More specifically, is the total time spend still fastest if i use datetime, if that means that i have to create a datetime object for EVERY timestamp part of the string for each file path.
+
+Here is the code for my case:
+
+This version does all the comparison as STRINGS! However i consider converitng all the strings to datetime before comparing.
+
+    def file_meets_criteria(timestamp, comp_timestamp, after=True):
+            try:
+                return timestamp > comp_timestamp if after else timestamp <= comp_timestamp
+            except ValueError:
+                # Handle potential errors in parsing the timestamp from the filename
+                return False
+    
+    
+    def list_and_filter_filenames(path: str, table_name: str, timestamp: Union[str,datetime], read_from: bool, max_depth=2):
+        
+        if isinstance(timestamp, datetime):
+            timestamp = timestamp.strftime('%Y%m%d%H%M%S%f')[:-3]
+        if timestamp:
+            timestamp_date = timestamp[:8]
+    
+        directory_entries = mssparkutils.fs.ls(path)
+    
+        for entry in directory_entries:
+            if entry.size != 0:  # This entry is a file
+                file_timestamp = file_name.split('/')[-1].replace(table_name, '').split('.')[0]
+                if (not timestamp) or (file_meets_criteria(file_timestamp, timestamp, read_from)):
+                    yield entry.path
+    
+            elif max_depth > 1:  # This entry is a directory, and more depth allowed
+                folder_date = entry.path.split('/')[-1].replace(table_name, '').split('.')[0][:8]
+                if (not timestamp) or (file_meets_criteria(folder_date, timestamp_date, read_from)):
+                    for deeper_entry in list_and_filter_filenames(entry.path, table_name, timestamp, read_from, max_depth - 1):
+                        yield deeper_entry
+    
+     # If the timestamp is a str parse it to a datetime
+        if isinstance(timestamp, datetime):
+            timestamp = timestamp.strftime('%Y%m%d%H%M%S%f')[:-3]
+        if timestamp:
+            timestamp_date = timestamp[:8]
+    
+    
+        def file_meets_criteria(file_name, comp_timestamp, file_timestamp after=True):
+            try:
+                return file_timestamp > comp_timestamp if after else file_timestamp <= comp_timestamp
+            except ValueError:
+                # Handle potential errors in parsing the timestamp from the filename
+                return False
+    
+        directory_entries = mssparkutils.fs.ls(path)
+    
+        for entry in directory_entries:
+            if entry.size != 0:  # This entry is a file
+                file_timestamp = file_name.split('/')[-1].replace(table_name, '').split('.')[0]
+                if (not timestamp) or (file_meets_criteria(entry.name, timestamp, read_from)):
+                    yield entry.path
+    
+            elif max_depth > 1:  # This entry is a directory, and more depth allowed
+                folder_date = entry.path.split('/')[-1].replace(table_name, '').split('.')[0][:8]
+                if (not timestamp) or folder_date>
+                for deeper_entry in list_and_filter_filenames(entry.path, table_name, timestamp, read_from, max_depth - 1):
+                    yield deeper_entry",10,6,Live-Entertainment70,2024-05-08 06:54:30,https://www.reddit.com/r/dataengineering/comments/1cmy8kv/best_practice_for_comparing_timestamps_string/,1.0,False,False,False,False
+1cncaft,Advice on next steps in data career?,"Hello all. Looking for advice on next career steps. 
+
+  
+Going on three years now I have worked at a start up where I started as an ""analyst"" and now my official title is ""Business Intelligence Engineer"". My day to day has me primarily using SQL where I mainly keep the database up to date. Whether it be updating, inserting, or deleting data with some reporting on the side. At times I have also advised on table design, and every once and a while I get to use a little Python to script some ETL. I use PSQL, UNIX, and GIT fairly regularly, and I can slowly make my way around a VIM editor.  
+
+As of late the job has stagnated in duties, the company still isn't profitable and I don't see anything changing anytime soon. I don't know what kinds of jobs I am qualified to move to though. 
+
+I don't have a CS degree. I did take some data analysis classes for my undergrad though.
+
+I don't feel I have enough Python experience to be a true data engineer. If I had more free time, I would code on the side to gain experience, and I have considered quitting and taking a month or two off to up my skills. I have spent lots of time working with a data engineer in my company. He has taught me a lot about everything related to data, and I envy the projects he gets to work on. 
+
+I don't really enjoy the analytics side of data. I much prefer just writing code. I know I can't totally escape from it, but I don't want to be a true data analyst, writing reports and building dashboards.  
+
+I have some experience working with AWS. Mainly the console. 
+
+I really enjoy coding. I feel very confident in my SQL.  I would love to be a data engineer. I also enjoy discussing data architecture. 
+
+  
+Given my history, what might be a next good step for me? If I can provide more context or information please ask. I am open to all feedback. I am US based and 29 years old if it makes a difference. 
+
+  
+",8,4,ambiguousjellyfish,2024-05-08 18:53:58,https://www.reddit.com/r/dataengineering/comments/1cncaft/advice_on_next_steps_in_data_career/,1.0,False,False,False,False
+1cn54yi,Is it a bad practice to write Airflow Tasks outside our Dags file?,"I’ve started my side project in data engineering. I’m using Airflow as the orchestrator. Since I haven't extensive experience with Airflow, I’m diving deep into the official documentation but couldn't find the answer 
+
+Currently, I would like to build one task that retrieves data from a website in XML format, converts it to JSON, and then stores it in my S3 bucket. Later, I’ll have three additional tasks for data cleaning and insertion into the database.
+
+Given that my code is growing, I’m wondering if it’s a good practice to create one task/function per file and then import them into my DAG?",8,5,aspecialuse,2024-05-08 13:54:43,https://www.reddit.com/r/dataengineering/comments/1cn54yi/is_it_a_bad_practice_to_write_airflow_tasks/,0.84,False,False,False,False
+1cn3hc3,Data Teams Survey 2024,"**Hey** r/dataengineering**!**
+
+I'm conducting a [quick (5 min) survey](https://forms.gle/FNc1KPz2Q3jDVixr8) to hear from awesome technical folks like you on the state of data teams.
+
+This isn't the first time I'm doing this survey and analysis. Here are the past survey results ([2020](https://www.jesse-anderson.com/2020/12/data-teams-survey-results/) & [2023](https://www.jesse-anderson.com/2023/03/data-teams-survey-2023-results/)) to see how data teams have evolved. This year's data will show how data engineering is continuing to evolve.
+
+**Ready to make a difference?**
+
+Take the survey: [Survey Link](https://forms.gle/FNc1KPz2Q3jDVixr8)
+
+**Let's build the future of data teams, together!**
+
+**P.S.** Share this with your tech network to get even more awesome data!",7,2,eljefe6a,2024-05-08 12:35:21,https://www.reddit.com/r/dataengineering/comments/1cn3hc3/data_teams_survey_2024/,0.89,False,False,False,False
+1cn0kgu,Best practices for pre-aggregation,"I'm trying to improve the query efficiency for our BI tool and I've read bits on various sites about pre-aggregation. Currently we have internal and embedded analytics for our clients, however no pre-aggregation is used and all queries call the same transaction table and aggs are done on the fly. 
+
+What I can't understand is how pre-aggregation can be best applied in my situation - let's say I prepare a table that aggregates several things like row counts and conditional row counts e.g. based on the categorical outcome of that particular row. As we have many columns that a user may want to filter on (including date), the actual number of rows in the pre-agg table grows exponentially with each new column.  
+
+1. Is the practice then to just have quite a large pre-agg table, just one that isn't as large as the original?
+
+2. Most of the charts are aggregations, and could be simple counts, pie charts, 12-month charts etc. Is it common to have multiple pre-agg tables (and therefore more maintenance) or do people generally find that one larger table is fine?
+
+3. Should the pre-agg table **only** contain counts, with things like averages, medians, percentages being calculated in the BI tool?
+
+4. Can dbt help with maintaining the pre-agg table?
+
+5. At what point do I need a Semantic layer? 
+
+",6,8,Disastrous_Classic96,2024-05-08 09:43:13,https://www.reddit.com/r/dataengineering/comments/1cn0kgu/best_practices_for_preaggregation/,0.88,False,False,False,False
+1cn4hem,What is Declarative Computing?,,6,0,sync_jeff,2024-05-08 13:24:24,https://medium.com/@synccomputing/what-is-declarative-computing-bd7bbb8d95e2,0.88,False,False,False,False
+1cn10zg,give me insight of Data vault 2.0,"Hi all.
+I'm currently designing and building a data analytics platform from the scratch.
+
+After deciding data warehouse solution, I have a concern about what data models suite for our business and how we can apply.
+
+Nowdays, I've realized that there is a big change stream of data warehouse with dbt(data build tool) and data vault 2.0.
+
+While I'm reading and studying about these,  there aren't much practical references or examples.
+So I find it hard to get how much data vault 2.0 impacts to the data warehouse.
+
+Is there anyone who knows well this concept or any comments?
+",7,9,PrimaryConsistent262,2024-05-08 10:14:19,https://www.reddit.com/r/dataengineering/comments/1cn10zg/give_me_insight_of_data_vault_20/,0.82,False,False,False,False
+1cmy4o4,Make IO Consistent from Object Store,"Hi everyone, hope you all are doing fine.  
+I was recently reading Fundamental of data engineering. I found How we can make object store consistent, They mentioned using postgress or building API's for this purpose which seems to be overkill for me. So I was just curious how do you solve this problem ?
+
+https://preview.redd.it/xvzed9jbf5zc1.png?width=753&format=png&auto=webp&s=d70ffaf615781ed1f1b5b6e9f5258e00c853bf6b
+
+https://preview.redd.it/zo7dog07f5zc1.png?width=721&format=png&auto=webp&s=ced69409b96b92facb41a569c4b4c5c1313ded35
+
+https://preview.redd.it/3p3ntalef5zc1.png?width=742&format=png&auto=webp&s=d44d009bde814e7ab2f922e4227ea0e30ece42cb
+
+**Another way of dealing with this is read from consistent snapshot. Does S3 Supports Versioning for the same purpose ?**
+
+https://preview.redd.it/olt07tefh5zc1.png?width=1622&format=png&auto=webp&s=e8af5fdc17b42864ccf17b193e5f64870e4844d1",6,1,AggravatingParsnip89,2024-05-08 06:47:02,https://www.reddit.com/r/dataengineering/comments/1cmy4o4/make_io_consistent_from_object_store/,1.0,False,False,False,False
+1cmxzvv,How to Delete Data in an Iceberg Table Without Losing Time Travel Capability ,"In order to comply with regulations, I need to delete certain data from an Iceberg table. I understand that I can delete the data, expire the snapshot, and remove orphan files. However, I don't want to break the continuity and lose the ability to perform time travel queries.
+
+Is there a way to accomplish this?
+
+Perhaps there's a method such as ""predicate encryption,"" where if the key is deleted, the data becomes unreadable? Or is there a way to delete the data without updating the snapshot references?
+",5,0,Particular_Scar2211,2024-05-08 06:38:14,https://www.reddit.com/r/dataengineering/comments/1cmxzvv/how_to_delete_data_in_an_iceberg_table_without/,0.86,False,False,False,False
+1cniyf0,"Mass CSV import tips and recommendations? (e.g. Flatfile, One Schema, csvbox, Droom)","Hi, I'm working with an agency team that needs to collect and consolidate data from spreadsheets.
+
+Note that each spreadsheet originates from a different client. They may have the same information, but they're never going to be consistent. Plus, we have to stick to file uploads since a direct API integration is not realistic.
+
+Ideally, we would upload the files into an app which we could program to rename, reformat, and reorder the columns. Once the data is transformed, it would get written to a table in our data warehouse. Bonus point if we could also have the ability to overwrite or delete data from a flawed file upload.
+
+This might be an oversimplified description, but I'm wondering if anyone has suggestions for this use case. I'm familiar with apps like Flatfile, One Schema, CSVImporter, and Droom -- but they seem like embeddable SDKs. Since internal users will be making these uploads, we don't need anything whitelabeled.
+
+Any thoughts are appreciated -- thx!",4,0,hazelnut_spread,2024-05-08 23:37:37,https://www.reddit.com/r/dataengineering/comments/1cniyf0/mass_csv_import_tips_and_recommendations_eg/,0.84,False,False,False,False
+1cnbssa,"Evaluate approach for Kafka, Spark, Iceberg pipeline & help for schema management","Hi all, I'm a relatively new (2 years) data engineer. I am working with the following architecture:  
+  
+**Kafka (Cloudera on-prem) + Spark (On-prem cluster) + Nessie(k8s) with Iceberg on Minio (on-prem s3 storage)**
+
+My use case is a team of 50 engineers that run scripts few times a day that generate GB of data - consequent runs may share the same schema but it is possible that on a new run there is a column added. The data needs to be stored in a data lake in relatively real-time (few seconds) and then queried using Dremio or visualized for forecasting. I decided the flow should be:
+
+1. Python Kafka Producer checks Nessie Catalog/Iceberg if 'TableName' exists, if yes retrieves schema and validates current record against that, if not then registers the schema of current record as a new table in Nessie.
+2. Producer appends TableName to record and writes the record as json\_str to Kafka
+3. Spark Streaming Consumer 
+   1. reads record from Kafka and parses table name (maybe from key)
+   2. Gets the schema for the table name from Nessie and uses that to create a Spark dataframe from the json\_str record
+   3. writes Spark dataframe as a row to iceberg table in S3
+
+I'm seeking feedback on whether this approach is sound and have a few questions:
+
+1. Should there be a unique Kafka topic for each schema considering multiple schemas from 50+ engineers? (I've decided against it for now but would appreciate thoughts.)
+2. How can I ensure a single source of truth for the schema? I've considered Schema Registry for Kafka but opted against it due to lack of expertise and time. I'm using Nessie as a 'schema registry', but there's no pure Python way to interact with it apart from using its Iceberg-Nessie Spark plugin and running the producer on Spark.
+3. Do the steps of the producer registering schema for every new table/getting schema for every new record, and doing the same thing again in Spark, add too much overhead and unnecessary latency for a streaming solution? Maintaining sub-second latency isn't crucial but data quality is more important to me.
+
+https://preview.redd.it/2vceao8vx8zc1.jpg?width=2932&format=pjpg&auto=webp&s=2f426ea0e1eda43799a13ee53998ceb6e6e78af8
+
+",6,1,Due-Researcher-8399,2024-05-08 18:33:13,https://www.reddit.com/r/dataengineering/comments/1cnbssa/evaluate_approach_for_kafka_spark_iceberg/,1.0,False,False,False,False
+1cn5gc2,Inventions in data engineering,"I am wondering if there are any inventions with data engineering scope of work. What does an invention for a data engineer look like? 
+Is Airflow an invention? 
+Please give me your thoughts on how/where to find and keep up with inventions in our domain of work.",6,16,Jealous-Bat-7812,2024-05-08 14:08:18,https://www.reddit.com/r/dataengineering/comments/1cn5gc2/inventions_in_data_engineering/,0.64,False,False,False,False
+1cn5as7,Streamlining Data Flow: Building Cloud-Based Data Pipelines - Data Engineering Process Fundamentals - Presentation,"We delve into the world of cloud-based data pipelines, the backbone of efficient data movement within your organization. As a continuation of our Data Engineering Process Fundamentals series, this session equips you with the knowledge to build robust and scalable data pipelines leveraging the power of the cloud. Throughout this presentation, we'll explore the benefits of cloud-based solutions, delve into key design considerations, and unpack the process of building and optimizing your very own data pipeline in the cloud.
+
+  
+[https://youtube.com/live/iMXl99xwGjo?feature=share](https://youtube.com/live/iMXl99xwGjo?feature=share)",5,0,Ozkary,2024-05-08 14:01:38,https://www.reddit.com/r/dataengineering/comments/1cn5as7/streamlining_data_flow_building_cloudbased_data/,1.0,False,False,False,False
+1cmznxi,data warehouse architecture,"hi,
+
+Plan is to build a data warehouse for a small company (few data analysts). 
+
+Main database at the moment is - Microsoft SQL Server and I would like to push that data to Azure Synapse. Our data is mutable, therefore I would like implement a tracking on the whole table - is that possible? We don't have column which would indicate if a row has changed, therefore I would like to track all of the rows from the past, but isnt it the same as reloading each day? In case a record has changed, i want to get the newer version in the data warehouse.
+
+What are other important things i should take care of? Main result would be to lead 20-30 tables from Microsoft SQL server to Azure and thats it. Is the only way to store data is a dedicated SQL pool? They are super expensive, but our whole architecture is on Azure therefore it would be great to stay with Azure Stack.
+
+Should the ETL be on top of Azure Data Factory or should i consider something else? Biggest table - 1m rows, 2k rows per day. 
+
+  
+All tips, ideas and comments - very well appreciated. 
+
+
+
+Thank you. ",5,4,Ok_War_9819,2024-05-08 08:36:51,https://www.reddit.com/r/dataengineering/comments/1cmznxi/data_warehouse_architecture/,0.86,False,False,False,False
+1cnel1c,What are some good PDF context reading tools/OCR tools? ,"I need to find a way to take lots of financial statement pdfs from 600+ clients and extract data from them. 
+
+I tried building a gpt chatbot that reads the pdfs but that didn't work out. There's just too much variance between the documents so I couldn't nudge it in the right direction since the directions are different for each document.
+
+So far I've tried using the Adobe tool which is shit, a tool called liner which is just a pretty version of what I built so that was useless. And I'm currently in the trial process with a company called Super.ai which looks promising but so far haven't gotten the results I wanted.
+
+Any suggestions for good tools for this use case. ",4,6,bigYman,2024-05-08 20:30:46,https://www.reddit.com/r/dataengineering/comments/1cnel1c/what_are_some_good_pdf_context_reading_toolsocr/,0.84,False,False,False,False
+1cn56v2,Unlocking Insights: Data Analysis and Visualization - Data Engineering Process Fundamentals ,"Join today 5/8/2024 at 12pm EST for a presentation on  ""Unlocking Insights: Data Analysis and Visualization - Data Engineering Process Fundamentals""   
+
+Building on our previous exploration of architecting a data warehouse, we now delve into unlocking the insights from our data with data analysis and visualization. In this continuation of our data engineering process series, we focus on visualizing insights. We learn about best practices for data analysis and visualization, we then move into an implementation using a code-centric dashboard using Python, Pandas and Plotly. We then follow up by using a high-quality enterprise tool, such as Looker, to construct a low-code cloud-hosted dashboard, providing us with insights into the type of effort each method takes.
+
+ [https://youtube.com/live/5AZVLeDLAAo?feature=share](https://youtube.com/live/5AZVLeDLAAo?feature=share)   ",5,1,Ozkary,2024-05-08 13:57:06,https://www.reddit.com/r/dataengineering/comments/1cn56v2/unlocking_insights_data_analysis_and/,1.0,False,False,False,False
+1cn4iao,Database schema reader that produces ERD,"Is anyone aware of a software that connect to a database, scan it, and spit out a ERD? This would be super useful as a analytics engineer to scan some piece of crap sql server with no docs and is ancient and designed poorly to get some sense out of it quickly. 
+
+Edit: thanks to responder for telling me the feature is called reverse engineering. Super helpful. 
+
+If anyone has recommendations for tools that do this it would be great. My criteria are … non-enterprise software (that drops Erwin as a possibility), needs sql server compatability. Nice to have is something modern / cloud based that’s easier to collab on but it’s not a hard requirement, I just don’t remember how to handle locally installed apps anymore 😅",4,4,OreosAreAiight,2024-05-08 13:25:32,https://www.reddit.com/r/dataengineering/comments/1cn4iao/database_schema_reader_that_produces_erd/,1.0,False,False,False,False
+1cng4wq,Can I set up a dbt project without a database/output?,"For testing purposes, I essentially want to hardcode some sql models, ie just:
+
+select 'Bob' as First\_Fame, 'Smith' as Last\_Name
+
+And execute dbt test to runs some tests on them.
+
+However, I haven't managed to do this. Without a valid output in profile in errors, and if I point it to the actual database, it errors because the table doesn't exist. ",3,5,slcgayoutdoors,2024-05-08 21:36:57,https://www.reddit.com/r/dataengineering/comments/1cng4wq/can_i_set_up_a_dbt_project_without_a/,1.0,False,False,False,False
+1cncmvu,What actual methodologies and frameworks do you use for data modeling and design? (Discussion),"I’m currently reading a book call “Agile Data Warehouse Design” to prep for an engagement I have coming up. They have a methodology called “BEAM\*” which they describe as a process to use for collaboratively working with stakeholders to identify data and document business processes.
+
+Reading this has gotten me thinking, how do others go about performing this work? I’m talking about starting from meeting with stakeholders and business analysts, finding out what questions they’re interested in asking against data, documenting this in a way that’s understandable and useful to both technical and non technical folks, and then ultimately building a star schema or something akin to it. Do you guys just wing it or do you follow a specific methodology that you’ve found useful? I feel like there’s quite a bit of overlap with DDD in a sense of modeling business events for example. And I know Kimball talked about things like the enterprise bus matrix (i think that’s what it was called) among other frameworks.  
+
+
+I’m also curious in how far you go in discussing these more abstract questions before looking at the actual data available and its quality. For example a business can talk all about how they want to understand efficiency of gas mileage for example in their company vehicles, but if they don’t collect data related to that (or the data is of bad quality) then it probably doesn’t make sense to spend a ton of time discussing it. ",3,8,IrresistibleMittens,2024-05-08 19:08:23,https://www.reddit.com/r/dataengineering/comments/1cncmvu/what_actual_methodologies_and_frameworks_do_you/,0.8,False,False,False,False
+1cnaht5,Need advice to improve hands-on pyspark skills,"I have been giving interviews for DE position since last 2 months. I have given total of 4 interviews, i could answer the theoretical questions very comfortably, but whenever a simple pyspark problem is asked i am not able to solve it. 
+
+To prepare for this I had collected some questions from linkedin posts but when similar pattern questions are not asked, I cannot solve it. 
+
+Need some advice on how do I improve hands on pyspark, java spark coding skills.
+",4,2,deadprisoner,2024-05-08 17:38:26,https://www.reddit.com/r/dataengineering/comments/1cnaht5/need_advice_to_improve_handson_pyspark_skills/,0.83,False,False,False,False
+1cn53dl,Company New Data Ingestion Architecture,"Hi.
+
+I'm kinda new to data engineering, sorry if this question is not well made and if I need to provide more info.
+
+I have been searching on the sub and I think I have an idea on the path to follow, but really vague idea at the moment.
+
+So, my company has factory plants in several locations in several countries. Sensor and other kinds of data is being stored in local influxdb for each plant. At the moment, we are getting this data into GCP (GCS/BigQuery) in batch with airflow dags running every hour, one dag for each plant. This raw data in BigQuery then has one dag running every hour to process it. This will have to be changed to streaming (or near real time at least) so decisions in the factory can be made on time based on the info we have available (at the moment, the info is getting to BigQuery with 1 hour delay at least, so this info is not really helpful at the moment the operators have access to it). We have a Dash interface that gets the data from BigQuery and this interface is where the operators are seeing the data, so the data needs to be in real time in BigQuery so it could also be in real time in the interface.
+
+The leadership team has the plan to change this ingestion to streaming. As far as I know, they already made some tests of passing the events in influxdb of one of the plants to a Kafka topic in the past, but just that. The idea seems to be having a central Kafka cluster where the events from all the multiple influxdb instances of the several locations are being sent, then using GCP Pub/Sub and getting this events from there into BigQuery using Dataflow. Does this make sense? Or what other approaches should we look into? What kind of information do we need to look into before making the decision on the best architecture?
+
+Doubts that I also have is on the Kafka architecture part, not familiar with Kafka. What info do we need to decide on what the Kafka part should look like? How many cluster/brokers/whatever else we need to configure?
+
+At the moment I'm trying to identify what will be the estimated rate of production of new events and how many of them, but expect a lot.
+
+Thanks in advance for your help! Will try to get more info in the meantime.",3,0,JalsPT,2024-05-08 13:52:43,https://www.reddit.com/r/dataengineering/comments/1cn53dl/company_new_data_ingestion_architecture/,1.0,False,False,False,False
+1cn0u9k,Data engineering hackathon,"We're running a hackathon with Y42 to get our product into the hands of data engineers, get feedback, and see what creative things they can build.
+
+If you have a fun pet project in mind, this might be a good moment to build it and win some cool prizes (MacBook, Airpods, etc.).
+
+More info and sign up form here: https://discord.gg/bHkQVe9hrY",1,3,RCdeWit,2024-05-08 10:01:58,https://www.reddit.com/r/dataengineering/comments/1cn0u9k/data_engineering_hackathon/,0.54,False,False,False,False
+1cncekv,XML Metadata Interchange in R,"Hi,  
+for a research I need to analyze a large data set of xmi files using R. Can anyone help directly or send me a website with suitable help? Thanks in advance.  
+Best",2,0,Haertes,2024-05-08 18:58:58,https://www.reddit.com/r/dataengineering/comments/1cncekv/xml_metadata_interchange_in_r/,1.0,False,False,False,False
+1cn83t0,Simple row-level transformations in Postgres Change Data Capture (CDC),"Today we are excited to announce Lua based row-level transformations as part of Postgres Change Data Capture (CDC) to Kafka and other message brokers. This feature unlocks many powerful use cases, such as: [https://blog.peerdb.io/row-level-transformations-in-postgres-cdc-using-lua](https://blog.peerdb.io/row-level-transformations-in-postgres-cdc-using-lua)  
+🔒 Masking PII Data: Obfuscate sensitive PII with tokens for enhanced privacy in Kafka.  
+🔄 Changing Data Format: Convert data into formats like Protobuf, JSON for optimized system handling.  
+📊 Generated Columns: Generate new values from existing data for real-time analysis enhancements.  
+🗂️ Unnesting JSONs: Flatten JSON elements into separate Kafka fields for improved usability.  
+🔀 Topic Routing: Direct CDC events to designated Kafka topics for targeted streaming.  
+🔐 Data Encryption: Encrypt sensitive data before Kafka entry to secure it during transit.  
+Give it a try and we would love hear your feedback! 😊 ",2,0,saipeerdb,2024-05-08 15:58:43,https://www.reddit.com/r/dataengineering/comments/1cn83t0/simple_rowlevel_transformations_in_postgres/,0.75,False,False,False,False
+1cn3nhi,Completing AWS Certified Data Engineer - Associate as a Begginer,"Hello All, 
+
+I have knowledge on data engineering through courses , lab practicals and worked with AWS tools for side projects (not data engineering), I'm new to data engineering field and giving interviews for the same. Many organization ask for cloud certification.   
+as a begginer , can i directly do AWS Data engineer certificate or do solution architect ?
+
+Please guide me.",2,2,Low-Veterinarian-859,2024-05-08 12:43:40,https://www.reddit.com/r/dataengineering/comments/1cn3nhi/completing_aws_certified_data_engineer_associate/,1.0,False,False,False,False
+1cnpyzx,"""The problem HAS to be the source""",,2,1,peroqueteniaquever,2024-05-09 05:51:16,https://imgur.com/a/KS8JPOe,1.0,False,False,False,False
+1cndsbv,Guide me to the right Path.,"I have 9YOE, as a Data Engineer (not sure about the title though).
+
+I worked on SQL, PLSQL and Postgres (and bash, God! I love bash) for about 5/6 years. I consider myself as Good in these tools. Then started on Pytton and Pyspark and Cloud (AWS) data solutions (alongside with my previous knowledge). I consider myself not as good on Python/Pyspark - mostly because I usually just google and code the requirements.
+
+I do not have imposter syndrome (but a year back I thought I had). I am confident on my skillset of data management/storage/analytics.
+
+Whenever I appear for interviews or search and apply for new DE jobs, In most cases I do not “feel” myself matched with the requirements. Whatever I had applied till now, most cases the person asked about programming questions, however I feel it should be more like How do I build or manage some requirements into code. How do i make cheap data management, or how do I make faster ETL with low failure rate. Or how would I utilise AWS solutions to build scalable Data pipelines. Instead they always ask what is the difference between coleace and repartition.🤦‍♂️
+
+1. Looking for help in getting a remote job (desperately) which matches my skillset mentioned above. Specially where to look. And the How part, any real experience would help a lot.
+
+2. Considering my skills above, What more should I learn (to get the job) and from where. What should be the learning goals, any practice needed, if yes then how (or maybe some resources).
+
+3. One of my DE buddy says ‘Bro, go deeper not wider’. (Basically asking me not to nibble in multiple tools/languages everyday after reading a medium blogpost). My question is, In this time, considering the market, how good of advise that is.
+ Should I follow my buddy’s advise considering the tech world right now?
+
+",0,3,30or,2024-05-08 19:57:16,https://www.reddit.com/r/dataengineering/comments/1cndsbv/guide_me_to_the_right_path/,0.5,False,False,False,False
+1cna4mg,query engine  user-facing data layer over delta lake tables in s3,"Hi,  
+I'm creating a data lakehouse for online reporting. I am using S3 with Iceberg tables in the storage layer, and in the processing layer, I'm using Spark Streaming on Kubernetes (K8s). However, I need a query engine to read data from these optimized  zone in lakehouse I'm unsure which one to use. Could you provide some suggestions?(open source)",1,1,More-Ad-5207,2024-05-08 17:22:54,https://www.reddit.com/r/dataengineering/comments/1cna4mg/query_engine_userfacing_data_layer_over_delta/,1.0,False,False,False,False
+1cn5p8s,Exploring Azure Cosmos DB: A Guide to Scalable NoSQL Database Solutions,"🚀 Dive into the future of databases with our latest blog on Azure Cosmos DB! 🌐 Discover how this fully managed NoSQL and relational database service can revolutionize your applications through global scalability, massive throughput, and efficient data partitioning. 🌟
+
+🔗 Learn about the key features:
+
+* Scalable partitioning (Logical & Physical)
+* Horizontal scaling for high availability
+* Global distribution and multi-master replication
+
+🛠️ Plus, get a step-by-step guide on setting up your own Cosmos DB instance!
+
+Perfect for developers looking to elevate their applications to the next level. Check it out now!  
+[https://erwinschleier.medium.com/exploring-azure-cosmos-db-a-guide-to-scalable-nosql-database-solutions-24c5474f74ca](https://erwinschleier.medium.com/exploring-azure-cosmos-db-a-guide-to-scalable-nosql-database-solutions-24c5474f74ca)
+
+# AzureCosmosDB #NoSQL #DataScalability #CloudComputing #MicrosoftAzure",0,1,EdgarHuber,2024-05-08 14:19:12,https://www.reddit.com/r/dataengineering/comments/1cn5p8s/exploring_azure_cosmos_db_a_guide_to_scalable/,0.5,False,False,False,False
+1cnfc9a,Question on leading data teams (non-tech manager),"I'm currently a Group Product Manager with an MBA and over 12 years of experience in growth marketing and marketing automation tools. There's a new opportunity on the horizon for me to expand my role to lead both data engineering and analytics teams. Given my background is not heavily focused on data science, I'm looking for advice on how to effectively manage and lead these teams. What are the key skills I should develop? Are there particular challenges I should be aware of?",0,5,helpyoustart39521,2024-05-08 21:03:52,https://www.reddit.com/r/dataengineering/comments/1cnfc9a/question_on_leading_data_teams_nontech_manager/,0.33,False,False,False,False
+1cn8tw7,Is AI becoming a real thread? Your backup plans,"Hey all, 
+I hope you a nice and happy Wednesday!
+
+I started to hear from my close ones about how layy-offs started to get correlated to ai causes. 5 % of layoffs seem to be due to GenAI replacement policies in corporate says ft [here](https://www.ft.com/content/908e5465-0bc4-4de5-89cd-8d5349645dda).[alternative ](https://www.businessinsider.com/ai-reduce-employee-headcount-this-year-ceo-study-jobcuts-efficiency-2024-1)
+
+Seeing friends struggling to find their next jobs(these are quite experienced and senior guys btw) in the data field. As I'm being bullish about the future of de jobs at least 5 more years, I just started questioning my current status like do I have any back-ups or what would be any possible scenario that I can proceed with. 
+
+One thing I've heard from one of my colleagues at work today is agriculture but obviously backed by data solutions.Like iot services integrated, sensors to gather climate, moisture, temperature of the land etc. He seemed so excited about how he could leverage agriculture with data, but I am not sure if it is really going to create value in practice. He is really planning to rent a land and to train himself at least a day in a week 😀
+
+I found it so interesting and an optimal solution, maybe I can join him too 🤔 
+If it works, it can be used to become a self sufficient farmer and also can be sold as a tool. One solution he mentioned already started to find customers [here](https://ecobloom.se/)
+
+What do you think? Do you have any backup plans ?
+
+
+",0,4,HappyEnvironment8225,2024-05-08 16:28:12,https://www.reddit.com/r/dataengineering/comments/1cn8tw7/is_ai_becoming_a_real_thread_your_backup_plans/,0.21,False,False,False,False

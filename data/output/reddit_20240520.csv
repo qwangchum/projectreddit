@@ -1,0 +1,143 @@
+id,title,selftext,score,num_comments,author,created_utc,url,upvote_ratio,over_18,edited,spoiler,stickied
+1cvtvsb,What’s your achievements in Data Engineering ,"What's the project you're working on or the most significant impact you're making at your company at Data engineering team . Share your storyline !
+
+",62,42,theant97,2024-05-19 17:45:27,https://www.reddit.com/r/dataengineering/comments/1cvtvsb/whats_your_achievements_in_data_engineering/,0.93,False,False,False,False
+1cvmerf,Data lineage tools,"Hello all,
+In our current project, we want to capture the entire end to end process. From the source till the final table creation kind of data lineage. Is there any free data lineage tools available?",26,26,arunrajan96,2024-05-19 11:45:17,https://www.reddit.com/r/dataengineering/comments/1cvmerf/data_lineage_tools/,0.95,False,False,False,False
+1cvrgsu,Recomendation for open source database?,"I’m looking at different open source alternatives for an analytical database to be deployed on-prem (rented servers). The use case is mostly reporting and dashboards for a medium-small business where I’m mostly the entire data team. Total data size less than 1TB. The four main alternatives that comes to mind are: 
+- DuckDB (I’m aware that this only allows one write process)
+- Clickhouse
+- StarRocks
+- Postgres (the application database is in Postgres so this comes with a couple of benefits in data transfer and experience within the team)
+
+What database would you recommend? I’m specifically curious about maintenance burden, as I don’t want me or any of the infrastructure team helping me out to become full time DBAs.
+",18,12,StandardDeviationist,2024-05-19 15:55:53,https://www.reddit.com/r/dataengineering/comments/1cvrgsu/recomendation_for_open_source_database/,1.0,False,False,False,False
+1cvq311,Tools for data modeling,"What tools do you use for data modeling? I’ve been using pen & paper and Excel but it’s far from ideal.
+
+I’m looking for tools that can help in every phase of modeling, from concept/brainstorming with colleagues and stakeholders to designing a final ER diagram. Any advice would be greatly appreciated!",17,18,jagdarpa,2024-05-19 14:54:58,https://www.reddit.com/r/dataengineering/comments/1cvq311/tools_for_data_modeling/,0.88,False,False,False,False
+1cvg2bm,"Questions to ask and what to look for when interviewing to gauge the ""technical culture"" of a team or company?","Currently working in a small company (~150 employees total) and a little while ago new management rolled in. Started restructuring company-wide and made quite a number of new hires in analyst-level roles, almost all newly created roles by them as a result of their restructuring project, who I've had to cross-functionally work with.
+
+The problem is that all of them have never coded in their lives and everything is pretty much built in Python and SQL. Now I have to explain how my code works without ever having to reference my code and justify the outputs of my code a-la ELI5 when the numbers ""don't look right"" to them so many times it's driving me nuts. Not to mention the pile of ad-hoc requests to extract or collate data.
+
+The job adverts apparently didn't even mention Python and SQL as I later found out. None of the above problem would arise if management would actually hire people who can code or at least during the hiring process consult with the existing team members because the new hires suddenly pop into the office out of the blue.
+
+Regardless, it's a bygone now and I guess it's time to start job hunting. To that end and per the title, are there things you've done in past interviews to get an idea of how a team or company is culturally in terms of its technical operations? Perhaps something to gauge how techincally-oriented the management is, does the company's management decision-making process respect its technical staff, etc.",14,6,YsrYsl,2024-05-19 04:34:23,https://www.reddit.com/r/dataengineering/comments/1cvg2bm/questions_to_ask_and_what_to_look_for_when/,0.86,False,False,False,False
+1cvhcqw,How do you properly assess a candidate for the role technical business analyst position to support data migration?,"We're currently hiring tech BAs to support the data engineers in migrating on prem data to cloud and building a new data platform, but i don't know how to screen them properly. What traits to I look for? How do I assess the skills? What portfolio should I look for? How do I test the knowhow?",11,12,omnipotentsoul,2024-05-19 05:56:15,https://www.reddit.com/r/dataengineering/comments/1cvhcqw/how_do_you_properly_assess_a_candidate_for_the/,0.93,False,False,False,False
+1cvr1cf,Resources for deep dive on query optimization,"Asking here because I think DE folks would know more than DAs lol, although I know this is more of a DA topic.
+
+I've got the basic stuff from Googling but I feel like I should know more (3 YOE) than just stuff like:
+
+* Avoid using functions in filter clauses
+* Avoid select distinct
+* Use indexes (in particular, I always read about this one but never dives in depth on how they work)
+* Inner join
+* Use LIMIT
+
+Surely there's some more advanced readings that I should be tackling to get more into nitty gritty and advanced stuff, but I don't know what I don't know at this point.",6,7,fittyfive9,2024-05-19 15:37:00,https://www.reddit.com/r/dataengineering/comments/1cvr1cf/resources_for_deep_dive_on_query_optimization/,0.88,False,False,False,False
+1cvoyy2,project review,i've done this [project](https://github.com/rxmi-bkd/olist-end-to-end-data-engineering-project) order to add it to my CV. What do you think ?,6,14,user_948304932,2024-05-19 14:01:48,https://www.reddit.com/r/dataengineering/comments/1cvoyy2/project_review/,0.88,False,False,False,False
+1cw2oru,Scaling up spatial nearest joins,"We work with  floating car data that have a longitude and latitude columns. These needs to be joined to the neiresr road (linestring).
+
+ There are about two billion rows that need to be processed and joined to the nearest road. What I already used is in databricks the library h3 to create an geo hexagonal index for both all the traces and the roads. 
+
+How to proceed then? looping over all the geo index and converting that pyspark dataframe to geopandas for the sjoin nearest method is still too slow.But apache sedona spatialknnquery can only one join one floating car trace at the time, whereas geopandas can join all points to all the roads at once.  But that crashes/too slow when too many points and roads exists in that hexagon.
+
+I tried using a distince within, but then i lose too many data entried since WGS84 is not precise enough and sometimes the point is like 10 -20 meters away from the road.
+
+Any suggestion?",5,2,tywinasoiaf1,2024-05-20 00:27:02,https://www.reddit.com/r/dataengineering/comments/1cw2oru/scaling_up_spatial_nearest_joins/,1.0,False,False,False,False
+1cw4m4z,Implementation of the raw stage layer before datavault,"I am thinking about how to start my own datavault project and I am thinking of going:
+
+1. Stage source tables in a sc2 like snapshot table from load tables so while developing I can truncate and reload all datavault tables and track possible issues and track history of changes using thr source tables history with no changes.
+2. Build a datavault off my sc2 of my source systems, normalize data and understand it.
+3. Build my data mart on top of the datavault.
+
+I was just wondering how others implemented datavault and what the layer looks like before datavault? I watched a bunch of videos on it and they all just pull data right from source and into the data mart without any curated layer so I was wondering if my stage 1 is over kill.
+",5,0,Bootlegcrunch,2024-05-20 02:08:06,https://www.reddit.com/r/dataengineering/comments/1cw4m4z/implementation_of_the_raw_stage_layer_before/,1.0,False,False,False,False
+1cvvdbm,Contributing to open source projects,"I never contributed to an open source project but I would like to.
+
+Since I moved from software to data I think I might be able to help the community in some way. 
+
+But I don’t know where to start. 
+
+Are there any open source projects with direct impact to my DE stack? Which is Azure and Databricks.",3,1,Emotional_Key,2024-05-19 18:52:26,https://www.reddit.com/r/dataengineering/comments/1cvvdbm/contributing_to_open_source_projects/,1.0,False,False,False,False
+1cvlsol,Help regarding Redshift Performance and DMS from RDS migration,"Hello
+
+Since I'm new to the AWS ecosystem, I'd like to seek some advice as I'm not quite sure how to approach this issue.
+
+We have a primary database (RDS (MySQL)) that is connected to DMS, which replicates everything to a newly created Redshift cluster (dc2.large 2 nodes). We want to gradually transition to Redshift.
+
+I have one particular case I'd like to get your opinion on:
+
+* **Monthly tables:** On RDS, many tables are created per month - e.g., orders\_202401, orders\_202402, etc. These tables are also replicated to Redshift in the same way. Is there a sensible way to combine all these monthly tables into one?
+
+For now, I've created an AWS Lambda that finds all tables on Redshift with a specific pattern and then creates a view like this:
+
+SQL
+
+    CREATE OR REPLACE VIEW orders AS (
+      SELECT * FROM orders_202401
+      UNION ALL 
+      SELECT * FROM orders_202402
+      ...
+      SELECT * FROM orders_202405
+    )
+
+However, it seems to me that it would be better to have everything in one table. Do you have any ideas on how to achieve this?
+
+**Case 2:** From what I've read, Redshift has DISTKEY and SORTKEY.
+
+In general, I have several tables with 500-1500 million records. I typically perform WHERE + GROUP BY operations on them and then join the results to the main customer table. Here's an example pseudo-query that finds customers for a given store who have made at least 10 orders:
+
+SQL
+
+    SELECT client_id, name, surname, email
+    FROM clients c
+    WHERE shop_id = 200
+    INNER JOIN
+    (
+      SELECT client_id
+      FROM orders
+      WHERE shop_id = 200
+      AND product_id IN (1, 2, 3, 4) -- optional
+      GROUP BY client_id
+      HAVING COUNT(order_id) > 10
+    ) s
+    ON s.client_id == c.client_id AND s.shop_id = c.shop_id
+
+**Table Information:**
+
+* **clients:** \~500 million records: 500 million unique client\_id, 5000 unique shop\_id (1 shop -> 20k - 150k client\_ids)
+* **orders:** 1600 million records - 300 million unique client\_id, 4400 unique shop\_id, 1600 million order\_id
+
+I created a DISTKEY on shop\_id and a SORTKEY on (shop\_id, customer\_id) for both tables. Unfortunately, these queries are very slow, and I'm wondering if I can speed them up using sortkey and distkey, or is it a matter of having a small cluster?
+
+Unless there's a more sensible way to handle  ?",3,5,Purple_Wrap9596,2024-05-19 11:06:45,https://www.reddit.com/r/dataengineering/comments/1cvlsol/help_regarding_redshift_performance_and_dms_from/,1.0,False,False,False,False
+1cvxgbp,Development path for data quality analyst with 2 years experience,"I work for a company that researches the effectiveness of marketing campaigns, or if you prefer, just social media. Our clients are international corporations. This is my first IT-related job. Previously, I worked on another project where I was involved in data validation, but after being promoted and moved to a new project, my skills/responsibilities are now:
+
+* SQL (selects, joins, merge, insert, update)
+* Python scripts connecting to BigQuery and checking data quality (mostly pandas) & adding those scripts with pushing results to BQ to ArgoWorkflow
+* Scheduling SQL queries & Python scripts to run automatically
+* Creating analysis tables for the DQ team to easily access the most important data and see check results
+* Creating dashboards in Grafana to visualize results and easily read results, for example, data availability or consistency between datasets by source and client
+* Additionally, I have created a dashboard to monitor processes of pulling & transforming data, plus log overview, so if something goes wrong, I know the reason and can forward the problem to developers
+
+In the beginning, I was what I would call a data validation specialist, but now I am more of a data monitoring and processing/data quality analyst. With automation, I have a lot of time that I would like to spend learning new things and improving my skills and CV. However, I honestly don't know which path I should take to have a good foundation for development. Data Analyst? BI Developer? Data Engineer?
+
+The current company isn't bad, as I have an excellent work-life balance, but the pay is pretty poor (1.68 times the net national minimum). So it's a good company to start with, but not for longer than 2-3 years.",2,2,Hot_Bullfrog_3921,2024-05-19 20:24:26,https://www.reddit.com/r/dataengineering/comments/1cvxgbp/development_path_for_data_quality_analyst_with_2/,0.75,False,False,False,False
+1cvubpr,Seeking ideas - Writing a useful data pipeline using datasets published daily?,"Hi there - As a portfolio project, I want to write something to consume daily data(from API/DBs/Files/etc) and write pipeline.
+
+Could you suggest some datasets that get published daily, and how that data can be processed to make it somewhat ""useful"" for this community.
+
+Open to any ideas/suggestions - perhaps something you've been meaning to do, but just haven't found the time to research/implement.",2,2,swapripper,2024-05-19 18:05:33,https://www.reddit.com/r/dataengineering/comments/1cvubpr/seeking_ideas_writing_a_useful_data_pipeline/,1.0,False,False,False,False
+1cw571h,Any recomendation of tools to document dataprep/etc?,"It's really common for me to create a dataprep or work with another person's dataprep for a ml model. I would like to document the process in a diagram to represent the flow and detail how each colum is created/treated in the process. The problem is that I can't find a tool that helps me build that, its always on a high level, missing intricate details that are actually helpful for anyone that would work on it. Do you guys have any recommendation on that?",1,0,Equivalent_Price,2024-05-20 02:39:29,https://www.reddit.com/r/dataengineering/comments/1cw571h/any_recomendation_of_tools_to_document_dataprepetc/,1.0,False,False,False,False
+1cvvxmg,Networking to lunch meeting to possible job to job: Wanting advice to make the last step,"I hope this is the appropriate place to make this post, if not please direct me.
+
+My Background: I'm a pure mathematics PhD and work part-time as a finance assistant (24hpw, not interesting as work and no progression unless I'm there for eternity). I'm so ready to move onto better things, it served its purpose. I've experienced a few economic, health and personal shocks in my life since 2021, my studies have suffered and its taken me a lot longer to finish than others in my cohort. I'm happy to disclose more in a private message if necessary for particular advice you want to give. I had research internships during my undergraduate so no industrial experience, I am looking and applying all over the place for entry roles, that story. All my rejections mention my lack of experience understandably. I cannot afford courses or training. 
+
+What's happened: Alongside juggling this I'm thinking about what's next. I've managed to find and regularly go to local networking events in Data, Cloud computing and Coding. Its been invaluable. At one event I got chatting to a guy giving me sound advice about what companies to apply for, we couldn't finish the conversation until after the event and he had to leave early, I reached out we met for lunch last Friday. It was really positive. We talked about what the Data Engineering role is, his experience with clients and looking for jobs, he asked about my experience in software, languages etc and he was floating a project he's involved in that will be active next month or so. At the end of the conversation he asked me to send over my CV. All things considered it went well, I got a lot of advice and he was informing me of other mathematicians ways in. Its just I'm not sure what his plan is, I said I'd love to join his team in some capacity if possible. From the conversation I got the impression he was considering me as a candidate but also that he was a very nice person wanting to pass some wisdom and advice.
+
+What I want in an ideal world: To hand in my 1 month notice and work for him in a capacity to get experience or a full-time job as soon as possible.
+
+I've never done something like this before or have family or friends who have and often I can usually be a bit too direct in situations like this to my detriment. I'm going to send him over my CV but I'm not exactly sure what to ask or say alongside it, I'm struggling to find the right words but I do not want to let this opportunity pass. This is where you come in!  ",0,2,som6Jordan,2024-05-19 19:17:14,https://www.reddit.com/r/dataengineering/comments/1cvvxmg/networking_to_lunch_meeting_to_possible_job_to/,0.5,False,False,False,False
+1cvlwn7,Gluejobs-snowflake,"Hi!
+I have spent the weekend trying to set Up glue and snowflake to use gluejobs to do ETL on a snowflake table, but I have a lot of problems with the information provided in the documentation. Does anyone know of a reliable source I can go to?
+",1,1,Selafin_Dulamond,2024-05-19 11:14:01,https://www.reddit.com/r/dataengineering/comments/1cvlwn7/gluejobssnowflake/,0.67,False,False,False,False
